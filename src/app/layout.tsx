@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={ebGaramond.variable}>
         <Header />
-        <main className="max-w-6xl mx-auto px-6 md:px-10 py-8">
+        <main className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           {children}
         </main>
         <Footer />
