@@ -2,12 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navItems = [
-  { label: "Archive", href: "/archive" },
-  { label: "Race Ratings", href: "/race-ratings" },
-  { label: "The Spread", href: "/the-spread" },
-  { label: "Decision Desk", href: "/decision-desk" },
   { label: "About", href: "/about" },
-  { label: "Subscribe", href: "/subscribe" },
 ];
 
 export default function Header() {
