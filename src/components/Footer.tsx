@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { footerNavItems } from "@/lib/navigation";
 
 export default function Footer() {
   return (
@@ -16,10 +17,12 @@ export default function Footer() {
             />
             <span className="font-bold text-lg text-charcoal">The Heat Sheet</span>
           </div>
-          <ul className="flex gap-6 text-sm">
-            <li>
-              <Link href="/about">About</Link>
-            </li>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {footerNavItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="mt-8 pt-6 border-t border-charcoal/10">
