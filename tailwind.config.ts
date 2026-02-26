@@ -15,7 +15,7 @@ const config: Config = {
         "link-blue": "#1863DC",
       },
       fontFamily: {
-        serif: ["'EB Garamond'", "Georgia", "serif"],
+        serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
       },
     },
   },

@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { EB_Garamond } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-eb-garamond",
+});
 
 export const metadata: Metadata = {
   title: "The Heat Sheet",
@@ -16,19 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+      <body className={ebGaramond.variable}>
         <Header />
         <main className="max-w-6xl mx-auto px-6 md:px-10 py-8">
           {children}
