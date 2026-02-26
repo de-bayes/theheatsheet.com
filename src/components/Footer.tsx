@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,7 +6,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="flex items-center gap-3">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/logo-braces.svg"
               alt="The Heat Sheet"
               width={32}

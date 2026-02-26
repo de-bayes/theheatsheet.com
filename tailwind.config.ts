@@ -21,7 +21,7 @@ const config: Config = {
         "brand-bright-blue": "#1649ff",
       },
       fontFamily: {
-        serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
+        serif: ["EB Garamond", "Georgia", "serif"],
       },
     },
   },
