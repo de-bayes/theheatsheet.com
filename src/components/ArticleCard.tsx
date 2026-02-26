@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 interface ArticleCardProps {
   slug: string;
@@ -24,11 +23,14 @@ export default function ArticleCard({
     <article className="group">
       {image && (
         <Link href={`/posts/${slug}`} className="block overflow-hidden mb-4">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={image}
             alt={title}
             width={600}
             height={340}
+            loading="lazy"
+            decoding="async"
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
