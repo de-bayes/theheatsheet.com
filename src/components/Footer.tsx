@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <Image
-                src="/White.svg"
+                src="/logo-braces.svg"
                 alt="The Heat Sheet"
                 width={32}
                 height={32}
