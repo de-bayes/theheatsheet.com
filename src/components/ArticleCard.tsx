@@ -20,7 +20,7 @@ export default function ArticleCard({
   category,
 }: ArticleCardProps) {
   return (
-    <article className="group">
+    <article className="group border-t-2 border-brand-red/20 pt-4 hover:border-brand-red/60 transition-colors">
       {image && (
         <Link href={`/posts/${slug}`} className="block overflow-hidden mb-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
