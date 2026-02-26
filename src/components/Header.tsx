@@ -5,7 +5,7 @@ import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="border-b border-charcoal/10 relative">
+    <header className="relative">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
         <Link href="/" className="no-underline hover:no-underline flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -51,9 +51,6 @@ export default function Header() {
         </nav>
 
         <MobileNav />
-      </div>
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="h-px bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue" />
       </div>
     </header>
   );
