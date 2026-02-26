@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-12">
         <Image
-          src="/logo.svg"
+          src="/logo-hat.svg"
           alt="The Heat Sheet"
           width={200}
           height={200}

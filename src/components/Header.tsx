@@ -12,7 +12,7 @@ export default function Header() {
         <Link href="/" className="no-underline hover:no-underline inline-block">
           <div className="flex items-center justify-center gap-4">
             <Image
-              src="/White.svg"
+              src="/logo-braces.svg"
               alt="The Heat Sheet logo"
               width={56}
               height={56}
