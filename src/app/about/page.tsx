@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About — The Heat Sheet",
@@ -11,7 +10,8 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-12">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/logo-hat.svg"
           alt="The Heat Sheet"
           width={200}
