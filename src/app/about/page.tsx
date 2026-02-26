@@ -14,9 +14,9 @@ export default function AboutPage() {
         <img
           src="/logo-hat.svg"
           alt="The Heat Sheet"
-          width={200}
-          height={200}
-          className="mx-auto mb-6 w-40 h-40 md:w-48 md:h-48"
+          width={480}
+          height={178}
+          className="mx-auto mb-6 w-72 md:w-96 h-auto"
         />
         <h1 className="text-3xl md:text-4xl font-bold mb-2">
           About The Heat Sheet

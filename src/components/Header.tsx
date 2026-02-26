@@ -1,12 +1,11 @@
 import Link from "next/link";
-
-const navItems = [
-  { label: "About", href: "/about" },
-];
+import { mainNavItems, isDropdown } from "@/lib/navigation";
+import NavDropdown from "./NavDropdown";
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="border-b border-charcoal/10">
+    <header className="border-b border-charcoal/10 relative">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
         <Link href="/" className="no-underline hover:no-underline flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -26,20 +25,32 @@ export default function Header() {
             </p>
           </div>
         </Link>
-        <nav>
+
+        <nav className="hidden md:block">
           <ul className="flex items-center gap-x-6">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-sm uppercase tracking-wider text-charcoal/70 hover:text-charcoal no-underline hover:no-underline transition-colors"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {mainNavItems.map((entry) => {
+              if (isDropdown(entry)) {
+                return (
+                  <li key={entry.label}>
+                    <NavDropdown label={entry.label} items={entry.items} />
+                  </li>
+                );
+              }
+              return (
+                <li key={entry.href}>
+                  <Link
+                    href={entry.href}
+                    className="text-sm uppercase tracking-wider text-charcoal/70 hover:text-charcoal no-underline hover:no-underline transition-colors"
+                  >
+                    {entry.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
+
+        <MobileNav />
       </div>
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="h-px bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue" />
