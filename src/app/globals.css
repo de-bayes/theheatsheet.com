@@ -48,4 +48,8 @@
   .article-content strong {
     @apply font-bold;
   }
+
+  .brand-divider {
+    @apply h-1 w-24 rounded bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue;
+  }
 }

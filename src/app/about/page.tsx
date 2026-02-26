@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About — The Heat Sheet",
@@ -9,12 +10,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8">
-        About The Heat Sheet
-      </h1>
+      <div className="text-center mb-12">
+        <Image
+          src="/logo.svg"
+          alt="The Heat Sheet"
+          width={200}
+          height={200}
+          className="mx-auto mb-6 w-40 h-40 md:w-48 md:h-48"
+        />
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">
+          About The Heat Sheet
+        </h1>
+        <div className="flex justify-center mt-4">
+          <div className="h-1 w-24 rounded bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue" />
+        </div>
+      </div>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">What We Are</h2>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span className="inline-block w-1.5 h-8 rounded bg-brand-red" />
+          What We Are
+        </h2>
         <p className="text-lg leading-relaxed mb-4">
           The Heat Sheet is a nonpartisan political analysis publication built by
           young analysts who believe election forecasting should be transparent,
@@ -33,7 +49,10 @@ export default function AboutPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Our Thesis</h2>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span className="inline-block w-1.5 h-8 rounded bg-brand-orange" />
+          Our Thesis
+        </h2>
         <p className="text-lg leading-relaxed mb-4">
           The current political forecasting landscape has a gap. Qualitative
           raters like Cook, Sabato, and Inside Elections produce expert judgments
@@ -54,10 +73,35 @@ export default function AboutPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Core Principles</h2>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span className="inline-block w-1.5 h-8 rounded bg-brand-blue" />
+          Why &ldquo;The Heat Sheet&rdquo;?
+        </h2>
+        <p className="text-lg leading-relaxed mb-4">
+          In competitive swimming, a heat sheet is the document handed out before
+          a meet that lists every race, every competitor, their seed times, and
+          their lane assignments. It&apos;s the essential reference &mdash; a
+          compact, data-rich summary of who&apos;s racing, where they stand, and
+          what to expect. That&apos;s exactly what we aim to be for American
+          politics: the essential reference for every competitive race,
+          who&apos;s running, where they stand, and what to watch for.
+        </p>
+        <p className="text-lg leading-relaxed">
+          The name also works on its own terms &mdash; &ldquo;heat&rdquo;
+          implies intensity, competition, and pressure; &ldquo;sheet&rdquo;
+          implies a reference document, a data source, a ratings page. You
+          don&apos;t need to know anything about swimming for the name to land.
+        </p>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span className="inline-block w-1.5 h-8 rounded bg-brand-red" />
+          Core Principles
+        </h2>
 
         <div className="space-y-8">
-          <div>
+          <div className="border-l-2 border-charcoal/10 pl-6">
             <h3 className="text-xl font-bold mb-2">
               1. Calibration Over Accuracy
             </h3>
@@ -71,7 +115,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-l-2 border-charcoal/10 pl-6">
             <h3 className="text-xl font-bold mb-2">
               2. Radical Transparency
             </h3>
@@ -83,7 +127,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-l-2 border-charcoal/10 pl-6">
             <h3 className="text-xl font-bold mb-2">
               3. Accountability for Everyone
             </h3>
@@ -95,7 +139,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-l-2 border-charcoal/10 pl-6">
             <h3 className="text-xl font-bold mb-2">
               4. Nonpartisan Analysis
             </h3>
@@ -111,51 +155,54 @@ export default function AboutPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">What We Publish</h2>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span className="inline-block w-1.5 h-8 rounded bg-brand-blue" />
+          What We Publish
+        </h2>
 
-        <div className="space-y-6">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-charcoal/[0.03] rounded-lg p-5">
             <h3 className="text-xl font-bold mb-1">Race Ratings</h3>
-            <p className="text-lg leading-relaxed text-charcoal/80">
+            <p className="text-base leading-relaxed text-charcoal/80">
               Every competitive House, Senate, and gubernatorial race rated with
               explicit probability estimates and margin ranges.
             </p>
           </div>
 
-          <div>
+          <div className="bg-charcoal/[0.03] rounded-lg p-5">
             <h3 className="text-xl font-bold mb-1">The Spread</h3>
-            <p className="text-lg leading-relaxed text-charcoal/80">
+            <p className="text-base leading-relaxed text-charcoal/80">
               When prediction markets, expert ratings, and fundamentals disagree
-              on the same race — we break down why and who we think is right.
+              on the same race &mdash; we break down why and who we think is right.
             </p>
           </div>
 
-          <div>
+          <div className="bg-charcoal/[0.03] rounded-lg p-5">
             <h3 className="text-xl font-bold mb-1">
               Decision Desk Scorecards
             </h3>
-            <p className="text-lg leading-relaxed text-charcoal/80">
+            <p className="text-base leading-relaxed text-charcoal/80">
               Grading AP, DDHQ, Fox, CNN, and NBC on election night speed,
               accuracy, and the tradeoff between the two.
             </p>
           </div>
 
-          <div>
+          <div className="bg-charcoal/[0.03] rounded-lg p-5">
             <h3 className="text-xl font-bold mb-1">
               Prediction Market Health Grades
             </h3>
-            <p className="text-lg leading-relaxed text-charcoal/80">
+            <p className="text-base leading-relaxed text-charcoal/80">
               Not all markets are created equal. We grade them on liquidity,
               volume, spreads, and convergence.
             </p>
           </div>
 
-          <div>
+          <div className="bg-charcoal/[0.03] rounded-lg p-5 md:col-span-2">
             <h3 className="text-xl font-bold mb-1">
               Campaign Finance Effectiveness
             </h3>
-            <p className="text-lg leading-relaxed text-charcoal/80">
-              Measuring whether campaign spending actually moves the needle —
+            <p className="text-base leading-relaxed text-charcoal/80">
+              Measuring whether campaign spending actually moves the needle &mdash;
               Wins Above Replacement for political money.
             </p>
           </div>

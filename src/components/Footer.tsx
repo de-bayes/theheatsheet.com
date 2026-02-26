@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,7 +7,16 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-3">The Heat Sheet</h3>
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                src="/hat.svg"
+                alt="The Heat Sheet"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <h3 className="font-bold text-lg">The Heat Sheet</h3>
+            </div>
             <p className="text-sm text-meta-gray leading-relaxed">
               Nonpartisan political analysis. Calibrated forecasts.
               Accountable journalism.
@@ -41,8 +51,13 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 pt-6 border-t border-charcoal/10 text-center text-sm text-meta-gray">
-          &copy; {new Date().getFullYear()} The Heat Sheet. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-charcoal/10">
+          <div className="flex justify-center mb-4">
+            <div className="h-0.5 w-16 rounded bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue" />
+          </div>
+          <p className="text-center text-sm text-meta-gray">
+            &copy; {new Date().getFullYear()} The Heat Sheet. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
