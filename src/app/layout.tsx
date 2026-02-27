@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
-        <main className="max-w-6xl mx-auto px-6 md:px-10 py-10">
+        <main className="max-w-6xl mx-auto px-6 md:px-10 py-10 page-enter">
           {children}
         </main>
         <Footer />
