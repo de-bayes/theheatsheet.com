@@ -22,8 +22,6 @@ The Heat Sheet sits at the intersection of all three.
 
 **Prediction Market Health Grades** — Not all prediction markets are created equal. A 62% on Kalshi doesn't mean the same thing as a 62% on Polymarket if one market has $500 in open interest and a 15-cent bid-ask spread.
 
-**Campaign Finance Effectiveness** — How much does a dollar of campaign spending actually move the needle? We're building models to find out.
-
 ## Our Promise
 
 Every claim we make will be backed by data. Every projection we publish will be scored after the fact. We grade ourselves with the same rigor we apply to everyone else.
