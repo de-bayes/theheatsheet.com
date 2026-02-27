@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 export default function Header() {
   return (
-    <header className="relative">
+    <header className="relative border-b border-charcoal/10">
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="no-underline hover:no-underline">
           <Logo />

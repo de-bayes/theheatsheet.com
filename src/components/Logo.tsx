@@ -14,7 +14,7 @@ export default function Logo() {
       <span className="relative inline-flex items-baseline">
         <span aria-hidden="true">{"{"}</span>
         <span className="relative inline-block overflow-hidden transition-[width] duration-300 ease-in-out align-baseline"
-          style={{ width: hovered ? "14.5ch" : "3ch" }}
+          style={{ width: hovered ? "13ch" : "3ch" }}
         >
           <span
             className="inline-block transition-opacity duration-200 ease-in-out whitespace-nowrap"
