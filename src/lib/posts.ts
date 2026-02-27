@@ -14,6 +14,12 @@ export interface PostMeta {
   author: string;
   image?: string;
   category?: string;
+  readingTime: number;
+}
+
+function estimateReadingTime(text: string): number {
+  const words = text.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 export interface Post extends PostMeta {
@@ -30,7 +36,7 @@ export function getAllPosts(): PostMeta[] {
       const slug = name.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, name);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
@@ -40,6 +46,7 @@ export function getAllPosts(): PostMeta[] {
         author: data.author,
         image: data.image || undefined,
         category: data.category || undefined,
+        readingTime: estimateReadingTime(content),
       } as PostMeta;
     });
 
@@ -66,6 +73,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     author: data.author,
     image: data.image || undefined,
     category: data.category || undefined,
+    readingTime: estimateReadingTime(content),
     contentHtml,
   };
 }

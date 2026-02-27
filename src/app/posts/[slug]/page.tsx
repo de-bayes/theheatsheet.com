@@ -1,6 +1,7 @@
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import BackToTop from "@/components/BackToTop";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -46,11 +47,14 @@ export default async function PostPage({ params }: Props) {
             day: "numeric",
           })}
         </time>
+        <span>&middot;</span>
+        <span>{post.readingTime} min read</span>
       </div>
       <div
         className="article-content text-lg leading-relaxed"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
+      <BackToTop />
     </article>
   );
 }
