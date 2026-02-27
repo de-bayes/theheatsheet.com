@@ -63,8 +63,7 @@ export default function AboutPage() {
           </p>
           <p>
             We are not just another ratings site. We rate races, but we also
-            grade the raters. We analyze campaign money, but we measure whether
-            it actually works. We track prediction markets, but we tell you
+            grade the raters. We track prediction markets, but we tell you
             which ones to trust. Every claim we make is backed by data, and
             every projection we publish is scored after the fact.
           </p>
@@ -91,9 +90,8 @@ export default function AboutPage() {
           <p>
             The Heat Sheet sits at the intersection of all three. We publish
             race ratings with explicit probability estimates. We grade decision
-            desks and forecasters on accuracy and calibration. We evaluate
-            prediction markets on health and reliability. And we investigate
-            whether campaign spending actually moves the needle.
+            desks and forecasters on accuracy and calibration. And we evaluate
+            prediction markets on health and reliability.
           </p>
         </div>
       </section>
@@ -160,51 +158,41 @@ export default function AboutPage() {
           What We Publish
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="border border-charcoal/10 rounded-lg p-6">
-            <h3 className="text-lg font-bold mb-1">Race Ratings</h3>
-            <p className="text-base leading-relaxed text-charcoal/70">
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-xl font-bold mb-1">Race Ratings</h3>
+            <p className="text-lg leading-relaxed text-charcoal/85">
               Every competitive House, Senate, and gubernatorial race rated with
               explicit probability estimates and margin ranges.
             </p>
           </div>
 
-          <div className="border border-charcoal/10 rounded-lg p-6">
-            <h3 className="text-lg font-bold mb-1">The Spread</h3>
-            <p className="text-base leading-relaxed text-charcoal/70">
+          <div>
+            <h3 className="text-xl font-bold mb-1">The Spread</h3>
+            <p className="text-lg leading-relaxed text-charcoal/85">
               When prediction markets, expert ratings, and fundamentals disagree
               on the same race &mdash; we break down why and who we think is
               right.
             </p>
           </div>
 
-          <div className="border border-charcoal/10 rounded-lg p-6">
-            <h3 className="text-lg font-bold mb-1">
+          <div>
+            <h3 className="text-xl font-bold mb-1">
               Decision Desk Scorecards
             </h3>
-            <p className="text-base leading-relaxed text-charcoal/70">
+            <p className="text-lg leading-relaxed text-charcoal/85">
               Grading AP, DDHQ, Fox, CNN, and NBC on election night speed,
               accuracy, and the tradeoff between the two.
             </p>
           </div>
 
-          <div className="border border-charcoal/10 rounded-lg p-6">
-            <h3 className="text-lg font-bold mb-1">
+          <div>
+            <h3 className="text-xl font-bold mb-1">
               Prediction Market Health Grades
             </h3>
-            <p className="text-base leading-relaxed text-charcoal/70">
+            <p className="text-lg leading-relaxed text-charcoal/85">
               Not all markets are created equal. We grade them on liquidity,
               volume, spreads, and convergence.
-            </p>
-          </div>
-
-          <div className="border border-charcoal/10 rounded-lg p-6 md:col-span-2">
-            <h3 className="text-lg font-bold mb-1">
-              Campaign Finance Effectiveness
-            </h3>
-            <p className="text-base leading-relaxed text-charcoal/70">
-              Measuring whether campaign spending actually moves the needle
-              &mdash; Wins Above Replacement for political money.
             </p>
           </div>
         </div>
