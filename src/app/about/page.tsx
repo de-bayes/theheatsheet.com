@@ -49,9 +49,10 @@ export default function AboutPage() {
 
       {/* ---- What We Are ---- */}
       <section className="mb-16 md:mb-20">
-        <h2 className="text-xs uppercase tracking-widest text-meta-gray mb-5">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           What We Are
         </h2>
+        <div className="h-px w-12 bg-brand-red mb-6" />
         <div className="text-lg leading-relaxed space-y-4">
           <p>
             The Heat Sheet is a nonpartisan political analysis publication built
@@ -72,9 +73,10 @@ export default function AboutPage() {
 
       {/* ---- Our Thesis ---- */}
       <section className="mb-16 md:mb-20">
-        <h2 className="text-xs uppercase tracking-widest text-meta-gray mb-5">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           Our Thesis
         </h2>
+        <div className="h-px w-12 bg-brand-red mb-6" />
         <div className="text-lg leading-relaxed space-y-4">
           <p>
             The current political forecasting landscape has a gap. Qualitative
@@ -98,9 +100,10 @@ export default function AboutPage() {
 
       {/* ---- Core Principles ---- */}
       <section className="mb-16 md:mb-20">
-        <h2 className="text-xs uppercase tracking-widest text-meta-gray mb-5">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           Core Principles
         </h2>
+        <div className="h-px w-12 bg-brand-red mb-6" />
 
         <div className="space-y-6">
           <div>
@@ -154,9 +157,10 @@ export default function AboutPage() {
 
       {/* ---- What We Publish ---- */}
       <section className="mb-8">
-        <h2 className="text-xs uppercase tracking-widest text-meta-gray mb-5">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           What We Publish
         </h2>
+        <div className="h-px w-12 bg-brand-red mb-6" />
 
         <div className="space-y-6">
           <div>
