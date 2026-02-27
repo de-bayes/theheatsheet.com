@@ -8,7 +8,7 @@
   }
 
   a {
-    @apply text-link-blue hover:underline;
+    @apply text-charcoal/80 hover:text-charcoal underline decoration-charcoal/30 hover:decoration-charcoal/60 transition-colors;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -30,7 +30,7 @@
   }
 
   .article-content blockquote {
-    @apply border-l-4 border-charcoal pl-6 my-6 italic;
+    @apply border-l-4 border-charcoal/20 pl-6 my-6 italic;
   }
 
   .article-content ul {
@@ -50,6 +50,6 @@
   }
 
   .brand-divider {
-    @apply h-1 w-24 rounded bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue;
+    @apply h-px w-24 bg-charcoal/20;
   }
 }

@@ -21,7 +21,7 @@ export default function AboutPage() {
         </h1>
 
         <div className="flex justify-start mb-10">
-          <div className="h-1 w-16 rounded bg-gradient-to-r from-brand-red via-brand-orange to-brand-blue" />
+          <div className="h-px w-16 bg-charcoal/20" />
         </div>
 
         <div className="text-lg md:text-xl leading-relaxed space-y-5 text-charcoal/85">

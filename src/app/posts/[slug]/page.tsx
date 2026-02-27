@@ -29,7 +29,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <article className="max-w-3xl mx-auto">
       {post.category && (
-        <span className="text-xs uppercase tracking-widest text-link-blue font-semibold">
+        <span className="text-xs uppercase tracking-widest text-brand-red font-semibold">
           {post.category}
         </span>
       )}

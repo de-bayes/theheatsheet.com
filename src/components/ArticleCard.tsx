@@ -20,9 +20,9 @@ export default function ArticleCard({
   category,
 }: ArticleCardProps) {
   return (
-    <article className="group border-t-2 border-brand-red/20 pt-4 hover:border-brand-red/60 transition-colors">
+    <article className="group border-t border-charcoal/15 pt-4 hover:border-charcoal/40 transition-colors">
       {image && (
-        <Link href={`/posts/${slug}`} className="block overflow-hidden mb-4">
+        <Link href={`/posts/${slug}`} className="block overflow-hidden mb-4 no-underline">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
@@ -36,7 +36,7 @@ export default function ArticleCard({
         </Link>
       )}
       {category && (
-        <span className="text-xs uppercase tracking-widest text-link-blue font-semibold">
+        <span className="text-xs uppercase tracking-widest text-brand-red font-semibold">
           {category}
         </span>
       )}
@@ -50,7 +50,7 @@ export default function ArticleCard({
       <h2 className="text-xl font-bold mt-2 mb-2">
         <Link
           href={`/posts/${slug}`}
-          className="text-charcoal no-underline hover:no-underline hover:text-link-blue transition-colors"
+          className="text-charcoal no-underline hover:no-underline hover:text-charcoal/60 transition-colors"
         >
           {title}
         </Link>
