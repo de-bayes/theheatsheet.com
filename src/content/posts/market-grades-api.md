@@ -8,15 +8,9 @@ category: "The Spread"
 tags: ["Prediction Markets", "2026 Midterms"]
 ---
 
-Not all prediction markets are created equal. A 62% for a Senate candidate backed by $400,000 in open interest and a one-cent spread is a fundamentally different signal than a 62% in a market with $800 and a spread you could drive a truck through. Our grading system answers a simple question: **how much should you trust this market's price?**
+We grade every House, Senate, and gubernatorial prediction market on Kalshi -- daily, A through F -- on volume, spread, and open interest. If you want to know what that means and why, read [Your Local Market](/posts/your-local-market).
 
-Every day, we pull data from Kalshi and score each House, Senate, and gubernatorial market on three dimensions -- volume, spread, and open interest -- then roll them into a single letter grade, A through F. An A means a deep, active, tight market where the price is a genuine signal. An F means the number displayed is close to meaningless. (For the full methodology, see [Your Local Market](/posts/your-local-market).)
-
-Now you can access all of that data programmatically.
-
-## The API
-
-Our market grades are available as a free, public JSON API. No API key required. No rate limit (be reasonable). No authentication. Just fetch and go.
+This post is about the API. All of that data is now available as a free, public JSON endpoint. No API key. No authentication. No rate limit (be reasonable). Just fetch and go.
 
 **Base URL:**
 
