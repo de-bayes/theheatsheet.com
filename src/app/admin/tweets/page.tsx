@@ -6,8 +6,10 @@ import Link from "next/link";
 interface TweetEntry {
   id: string;
   url: string;
-  note?: string;
-  pinned?: boolean;
+  authorName: string;
+  handle: string;
+  text: string;
+  date?: string;
   addedAt: string;
 }
 
@@ -15,8 +17,10 @@ export default function AdminTweetsPage() {
   const [tweets, setTweets] = useState<TweetEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("");
-  const [note, setNote] = useState("");
-  const [pinned, setPinned] = useState(false);
+  const [authorName, setAuthorName] = useState("Ryan McComb");
+  const [handle, setHandle] = useState("@bayes_pr");
+  const [text, setText] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
   const [adding, setAdding] = useState(false);
 
@@ -37,7 +41,7 @@ export default function AdminTweetsPage() {
     const res = await fetch("/api/tweets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url, note, pinned }),
+      body: JSON.stringify({ url, authorName, handle, text, date }),
     });
 
     setAdding(false);
@@ -51,8 +55,8 @@ export default function AdminTweetsPage() {
     const entry = await res.json();
     setTweets((prev) => [entry, ...prev]);
     setUrl("");
-    setNote("");
-    setPinned(false);
+    setText("");
+    setDate("");
   }
 
   async function handleDelete(id: string) {
@@ -65,6 +69,7 @@ export default function AdminTweetsPage() {
 
   const inputClass =
     "w-full px-3 py-2 bg-cream border border-charcoal/15 rounded text-charcoal focus:outline-none focus:border-charcoal/40 transition-colors font-serif";
+  const labelClass = "block text-xs uppercase tracking-widest text-meta-gray mb-1";
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -97,9 +102,7 @@ export default function AdminTweetsPage() {
         )}
         <div className="space-y-3">
           <div>
-            <label className="block text-xs uppercase tracking-widest text-meta-gray mb-1">
-              Tweet URL
-            </label>
+            <label className={labelClass}>Tweet URL</label>
             <input
               type="url"
               value={url}
@@ -109,29 +112,50 @@ export default function AdminTweetsPage() {
               required
             />
           </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className={labelClass}>Author Name</label>
+              <input
+                type="text"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+                className={inputClass}
+                placeholder="Ryan McComb"
+                required
+              />
+            </div>
+            <div>
+              <label className={labelClass}>Handle</label>
+              <input
+                type="text"
+                value={handle}
+                onChange={(e) => setHandle(e.target.value)}
+                className={inputClass}
+                placeholder="@bayes_pr"
+                required
+              />
+            </div>
+          </div>
           <div>
-            <label className="block text-xs uppercase tracking-widest text-meta-gray mb-1">
-              Note (optional)
-            </label>
-            <input
-              type="text"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              className={inputClass}
-              placeholder="Context or description for this tweet"
+            <label className={labelClass}>Tweet Text</label>
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className={`${inputClass} resize-none`}
+              rows={3}
+              placeholder="Paste the tweet text here..."
+              required
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div>
+            <label className={labelClass}>Date (optional)</label>
             <input
-              type="checkbox"
-              id="pinned"
-              checked={pinned}
-              onChange={(e) => setPinned(e.target.checked)}
-              className="accent-charcoal"
+              type="text"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className={inputClass}
+              placeholder="Feb 28, 2026"
             />
-            <label htmlFor="pinned" className="text-sm text-charcoal/70">
-              Pin to top
-            </label>
           </div>
           <button
             type="submit"
@@ -153,36 +177,25 @@ export default function AdminTweetsPage() {
           {tweets.map((tweet) => (
             <div
               key={tweet.id}
-              className="flex items-center justify-between border-t border-charcoal/10 py-3 gap-4"
+              className="flex items-start justify-between border-t border-charcoal/10 py-3 gap-4"
             >
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  {tweet.pinned && (
-                    <span className="text-xs text-brand-red font-semibold uppercase tracking-widest">
-                      Pinned
-                    </span>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-bold text-sm">{tweet.authorName}</span>
+                  <span className="text-xs text-meta-gray">{tweet.handle}</span>
+                  {tweet.date && (
+                    <span className="text-xs text-meta-gray">&middot; {tweet.date}</span>
                   )}
-                  <a
-                    href={tweet.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-charcoal/70 hover:text-charcoal truncate"
-                  >
-                    {tweet.url}
-                  </a>
                 </div>
-                {tweet.note && (
-                  <p className="text-xs text-meta-gray mt-0.5 truncate">
-                    {tweet.note}
-                  </p>
-                )}
-                <p className="text-xs text-meta-gray mt-0.5">
-                  Added{" "}
-                  {new Date(tweet.addedAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
+                <p className="text-sm text-charcoal/70 line-clamp-2">{tweet.text}</p>
+                <a
+                  href={tweet.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-meta-gray hover:text-charcoal mt-1 inline-block"
+                >
+                  {tweet.url}
+                </a>
               </div>
               <button
                 onClick={() => handleDelete(tweet.id)}

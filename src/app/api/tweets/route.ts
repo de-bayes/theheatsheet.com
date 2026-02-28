@@ -7,8 +7,10 @@ const tweetsPath = path.join(process.cwd(), "src/data/tweets.json");
 export interface TweetEntry {
   id: string;
   url: string;
-  note?: string;
-  pinned?: boolean;
+  authorName: string;
+  handle: string;
+  text: string;
+  date?: string;
   addedAt: string;
 }
 
@@ -28,16 +30,22 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { url, note, pinned } = body;
+  const { url, authorName, handle, text, date } = body;
 
-  if (!url) {
-    return NextResponse.json({ error: "url is required" }, { status: 400 });
+  if (!url || !authorName || !handle || !text) {
+    return NextResponse.json(
+      { error: "url, authorName, handle, and text are required" },
+      { status: 400 }
+    );
   }
 
   // Extract tweet ID from URL
   const match = url.match(/status\/(\d+)/);
   if (!match) {
-    return NextResponse.json({ error: "Invalid tweet URL. Expected format: https://x.com/user/status/123456" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid tweet URL. Expected format: https://x.com/user/status/123456" },
+      { status: 400 }
+    );
   }
 
   const id = match[1];
@@ -50,8 +58,10 @@ export async function POST(request: Request) {
   const entry: TweetEntry = {
     id,
     url: url.replace("twitter.com", "x.com"),
-    note: note || undefined,
-    pinned: pinned || false,
+    authorName,
+    handle: handle.startsWith("@") ? handle : `@${handle}`,
+    text,
+    date: date || undefined,
     addedAt: new Date().toISOString(),
   };
 
