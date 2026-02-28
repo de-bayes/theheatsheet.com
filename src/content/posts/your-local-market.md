@@ -56,3 +56,7 @@ This is not a forecast. We are not predicting who will win. We're grading the qu
 Prediction markets are increasingly cited by journalists, campaigns, and political analysts as if they are oracles. Sometimes they are -- liquid, well-traded markets on high-profile races can be remarkably accurate. But the vast majority of prediction markets, especially in down-ballot House races, are thinly traded, wide-spread, and unreliable. Treating an F-grade market's price the same as an A-grade market's price is a category error, and one that, on the whole, nobody else is systematically flagging.
 
 That's the gap we're filling. Not all 62 percents are created equal, and now you can see why.
+
+## A Note on the Model
+
+This project started at the beginning of February 2026, and the grading system is very much experimental. The original version was built in Stata -- a simpler and possibly better approach for this kind of analysis. The JavaScript rebuild that powers this site is a departure from that, and should be treated accordingly. We're iterating in public, and the methodology will evolve as we learn what works and what doesn't.
