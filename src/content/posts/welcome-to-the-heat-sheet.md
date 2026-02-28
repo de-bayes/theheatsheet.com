@@ -4,6 +4,7 @@ date: "2026-02-26"
 excerpt: "Introducing a new kind of political analysis publication -- one built on calibration, transparency, and accountability."
 author: "Ryan McComb"
 authorSlug: "ryanm"
+image: "/images/heat-sheet-logo-hero.svg"
 category: "Announcements"
 ---
 

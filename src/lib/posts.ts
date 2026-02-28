@@ -16,6 +16,7 @@ export interface PostMeta {
   image?: string;
   category?: string;
   tags?: string[];
+  pinned?: boolean;
   readingTime: number;
 }
 
@@ -23,11 +24,17 @@ function slugifyTag(tag: string): string {
   return tag.toLowerCase().replace(/\s+/g, "-");
 }
 
+function allLabelsForPost(p: PostMeta): string[] {
+  const labels = [...(p.tags ?? [])];
+  if (p.category) labels.push(p.category);
+  return labels;
+}
+
 export function getAllTags(): { tag: string; slug: string; count: number }[] {
   const posts = getAllPosts();
   const map = new Map<string, { tag: string; count: number }>();
   for (const p of posts) {
-    for (const t of p.tags ?? []) {
+    for (const t of allLabelsForPost(p)) {
       const s = slugifyTag(t);
       const existing = map.get(s);
       if (existing) existing.count++;
@@ -39,7 +46,7 @@ export function getAllTags(): { tag: string; slug: string; count: number }[] {
 
 export function getPostsByTag(tagSlug: string): PostMeta[] {
   return getAllPosts().filter(
-    (p) => p.tags?.some((t) => slugifyTag(t) === tagSlug),
+    (p) => allLabelsForPost(p).some((t) => slugifyTag(t) === tagSlug),
   );
 }
 
@@ -74,6 +81,7 @@ export function getAllPosts(): PostMeta[] {
         image: data.image || undefined,
         category: data.category || undefined,
         tags: data.tags || undefined,
+        pinned: data.pinned || undefined,
         readingTime: estimateReadingTime(content),
       } as PostMeta;
     });
@@ -90,7 +98,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark().use(html, { sanitize: false }).process(content);
   const contentHtml = processedContent.toString();
 
   return {
@@ -103,6 +111,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     image: data.image || undefined,
     category: data.category || undefined,
     tags: data.tags || undefined,
+    pinned: data.pinned || undefined,
     readingTime: estimateReadingTime(content),
     contentHtml,
   };

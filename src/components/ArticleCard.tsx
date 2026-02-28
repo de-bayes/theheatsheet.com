@@ -47,7 +47,7 @@ export default function ArticleCard({
       )}
       {category && (
         <Link
-          href="/the-spread"
+          href={`/tags/${category.toLowerCase().replace(/\s+/g, "-")}`}
           className="text-xs uppercase tracking-widest text-brand-red font-semibold no-underline hover:underline hover:decoration-wavy hover:decoration-brand-red/30 hover:underline-offset-2 transition-colors"
         >
           {category}

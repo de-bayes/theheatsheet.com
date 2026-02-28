@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#f8f6f1",
-        charcoal: "#212121",
-        "meta-gray": "#aba7a7",
-        "brand-red": "#D42B2B",
-        "brand-red-dark": "#B81C1C",
+        cream: "rgb(248 246 241 / <alpha-value>)",
+        charcoal: "rgb(33 33 33 / <alpha-value>)",
+        "meta-gray": "rgb(171 167 167 / <alpha-value>)",
+        "brand-red": "rgb(212 43 43 / <alpha-value>)",
+        "brand-red-dark": "rgb(184 28 28 / <alpha-value>)",
       },
       fontFamily: {
         serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
