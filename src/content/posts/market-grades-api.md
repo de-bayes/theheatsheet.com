@@ -6,6 +6,7 @@ author: "Ryan McComb"
 authorSlug: "ryanm"
 category: "The Spread"
 tags: ["Prediction Markets", "2026 Midterms"]
+image: "/images/api-terminal-hero.svg"
 ---
 
 We grade every House, Senate, and gubernatorial prediction market on Kalshi -- daily, A through F -- on volume, spread, and open interest. If you want to know what that means and why, read [Your Local Market](/posts/your-local-market).
