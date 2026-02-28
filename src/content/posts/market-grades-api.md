@@ -86,15 +86,31 @@ Pull grades from a specific date. Use `?dates` to list all available dates:
 curl "https://theheatsheet.com/api/grades?dates"
 ```
 
-### Combine filters
+### Pretty-print for the terminal
 
-Filters stack. Get all A-graded Senate tossups:
+Add `format=table` to any request and get a formatted ASCII table instead of JSON -- with box-drawing, liquidity bars, and percentile ranks:
 
 ```bash
-curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup"
+curl "https://theheatsheet.com/api/grades?chamber=senate&format=table"
+```
+
+Works with every filter. Single race lookups get a detailed card:
+
+```bash
+curl "https://theheatsheet.com/api/grades?race=S2026IA02&format=table"
+```
+
+### Combine filters
+
+Filters stack. Get all A-graded Senate tossups as a table:
+
+```bash
+curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup&format=table"
 ```
 
 ## Response format
+
+### JSON (default)
 
 ```json
 {

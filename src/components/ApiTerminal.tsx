@@ -5,13 +5,13 @@ import { useState, useRef, useEffect, useCallback } from "react";
 const PROMPT = "~ $";
 
 const SUGGESTIONS = [
-  { label: "All races", cmd: "curl /api/grades" },
-  { label: "Senate only", cmd: 'curl "/api/grades?chamber=senate"' },
-  { label: "A-graded", cmd: 'curl "/api/grades?grade=A"' },
-  { label: "Tossups", cmd: 'curl "/api/grades?rating=tossup"' },
-  { label: "Iowa", cmd: 'curl "/api/grades?state=IA"' },
-  { label: "Single race", cmd: 'curl "/api/grades?race=S2026IA02"' },
-  { label: "Available dates", cmd: 'curl "/api/grades?dates"' },
+  { label: "Senate (table)", cmd: 'curl "/api/grades?chamber=senate&format=table"' },
+  { label: "Tossups (table)", cmd: 'curl "/api/grades?rating=tossup&format=table"' },
+  { label: "Iowa (table)", cmd: 'curl "/api/grades?state=IA&format=table"' },
+  { label: "Single race", cmd: 'curl "/api/grades?race=S2026IA02&format=table"' },
+  { label: "Senate (JSON)", cmd: 'curl "/api/grades?chamber=senate"' },
+  { label: "A-graded", cmd: 'curl "/api/grades?grade=A&format=table"' },
+  { label: "All dates", cmd: 'curl "/api/grades?dates"' },
 ];
 
 interface HistoryEntry {
@@ -80,8 +80,15 @@ export default function ApiTerminal() {
 
       try {
         const res = await fetch(`/${apiPath}`);
-        const data = await res.json();
-        const formatted = JSON.stringify(data, null, 2);
+        const contentType = res.headers.get("content-type") || "";
+        let formatted: string;
+
+        if (contentType.includes("text/plain")) {
+          formatted = await res.text();
+        } else {
+          const data = await res.json();
+          formatted = JSON.stringify(data, null, 2);
+        }
 
         setHistory((prev) => {
           const copy = [...prev];
