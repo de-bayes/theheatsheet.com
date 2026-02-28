@@ -7,6 +7,7 @@ authorSlug: "ryanm"
 category: "The Spread"
 tags: ["Prediction Markets", "2026 Midterms"]
 image: "/images/your-local-market-hero.png"
+pinned: true
 ---
 
 If you've ever taken a prediction market number at face value -- say, 62% for a Senate candidate in Iowa -- you've probably been misled. A 62% backed by $400,000 in open interest and a one-cent spread is a fundamentally different signal than a 62% in a market with $800 and a spread you could drive a truck through.
