@@ -17,6 +17,10 @@ The site sits at the intersection of three worlds: qualitative race ratings (Coo
 - No JavaScript-heavy UI frameworks, no component libraries — just Tailwind utility classes
 - Markdown files for articles; no CMS until we outgrow the file system
 
+## Background
+
+This project started at the beginning of February 2026. The site is very experimental -- the original analysis was built in Stata for the article [Your Local Market](https://www.theheatsheet.com/your-local-market), and this JavaScript/TypeScript rebuild is a departure from that simpler (and possibly better) approach. Consider it a work in progress.
+
 ## Architecture
 
 ```
