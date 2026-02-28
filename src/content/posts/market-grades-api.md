@@ -13,69 +13,87 @@ We grade every House, Senate, and gubernatorial prediction market on Kalshi -- d
 
 This post is about the API. All of that data is now available as a free, public JSON endpoint. No API key. No authentication. No rate limit (be reasonable). Just fetch and go.
 
-**Base URL:**
+<div class="api-callout">
+<h4>Base URL</h4>
 
 ```
 https://theheatsheet.com/api/grades
 ```
 
-### Get latest grades
+</div>
+
+<div class="api-callout">
+<h4>Get latest grades</h4>
 
 ```bash
 curl https://theheatsheet.com/api/grades
 ```
 
 Returns all graded races for the most recent date, sorted by competitiveness.
+</div>
 
-### Filter by chamber
+<div class="api-callout">
+<h4>Filter by chamber</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?chamber=senate"
 ```
 
 Options: `senate`, `house`, `governor`.
+</div>
 
-### Filter by state
+<div class="api-callout">
+<h4>Filter by state</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?state=IA"
 ```
 
 Uses two-letter state abbreviations.
+</div>
 
-### Filter by grade
+<div class="api-callout">
+<h4>Filter by grade</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?grade=A"
 ```
 
 Options: `A`, `B`, `C`, `D`, `F`.
+</div>
 
-### Filter by rating
+<div class="api-callout">
+<h4>Filter by rating</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?rating=tossup"
 ```
 
 Options: `Tossup`, `Lean D`, `Lean R`, `Likely D`, `Likely R`, `Solid D`, `Solid R`.
+</div>
 
-### Filter by minimum liquidity
+<div class="api-callout">
+<h4>Filter by minimum liquidity</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?min_liquidity=0.7"
 ```
 
 Only returns races with a composite liquidity score at or above the threshold (0 to 1).
+</div>
 
-### Look up a single race
+<div class="api-callout">
+<h4>Look up a single race</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?race=S2026IA02"
 ```
 
 Race IDs follow the format: `{chamber prefix}{year}{state}{district}`. Senate is `S`, House is `H`, Governor is `G`.
+</div>
 
-### Historical data
+<div class="api-callout">
+<h4>Historical data</h4>
 
 ```bash
 curl "https://theheatsheet.com/api/grades?date=2026-02-27"
@@ -87,7 +105,10 @@ Pull grades from a specific date. Use `?dates` to list all available dates:
 curl "https://theheatsheet.com/api/grades?dates"
 ```
 
-### Pretty-print for the terminal
+</div>
+
+<div class="api-callout">
+<h4>Pretty-print for the terminal</h4>
 
 Add `format=table` to any request and get a formatted ASCII table instead of JSON -- with box-drawing, liquidity bars, and percentile ranks:
 
@@ -101,13 +122,18 @@ Works with every filter. Single race lookups get a detailed card:
 curl "https://theheatsheet.com/api/grades?race=S2026IA02&format=table"
 ```
 
-### Combine filters
+</div>
+
+<div class="api-callout">
+<h4>Combine filters</h4>
 
 Filters stack. Get all A-graded Senate tossups as a table:
 
 ```bash
 curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup&format=table"
 ```
+
+</div>
 
 ## Response format
 

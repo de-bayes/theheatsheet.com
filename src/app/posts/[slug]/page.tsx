@@ -7,6 +7,7 @@ import Image from "next/image";
 import gradesData from "@/data/grades/latest.json";
 import MarketGradesTable from "@/components/MarketGradesTable";
 import ApiTerminal from "@/components/ApiTerminal";
+import CopyableContent from "@/components/CopyableContent";
 
 function slugifyTag(tag: string): string {
   return tag.toLowerCase().replace(/\s+/g, "-");
@@ -106,9 +107,9 @@ export default async function PostPage({ params }: Props) {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto">
-        <div
+        <CopyableContent
+          html={post.contentHtml}
           className="article-content text-lg leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
       </div>
 

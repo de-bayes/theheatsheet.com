@@ -49,6 +49,50 @@
     @apply font-bold;
   }
 
+  /* Code blocks with copy button */
+  .article-content .code-block-wrapper {
+    @apply relative my-5;
+  }
+
+  .article-content pre {
+    @apply bg-[#1e1e1e] text-[#e0e0e0] rounded-lg px-5 py-4 overflow-x-auto text-sm leading-relaxed;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  }
+
+  .article-content pre code {
+    @apply bg-transparent p-0 text-inherit;
+    font-size: inherit;
+  }
+
+  .article-content code {
+    @apply bg-charcoal/8 text-charcoal px-1.5 py-0.5 rounded text-[0.9em];
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  }
+
+  .article-content .copy-btn {
+    @apply absolute top-2 right-2 px-2.5 py-1 text-xs rounded
+           bg-white/10 text-white/60 hover:bg-white/20 hover:text-white
+           transition-all cursor-pointer border border-white/10;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  }
+
+  /* API callout cards */
+  .article-content .api-callout {
+    @apply border border-charcoal/10 rounded-xl px-6 py-5 my-5 bg-white/30;
+  }
+
+  .article-content .api-callout h4 {
+    @apply text-sm uppercase tracking-widest text-charcoal/50 font-semibold mt-0 mb-3;
+  }
+
+  .article-content .api-callout p {
+    @apply text-base mb-2;
+  }
+
+  .article-content .api-callout p:last-child {
+    @apply mb-0;
+  }
+
   .brand-divider {
     @apply h-px w-24 bg-charcoal/20;
   }
