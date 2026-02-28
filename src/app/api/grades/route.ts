@@ -2,6 +2,30 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+// ---------------------------------------------------------------------------
+// In-memory rate limiter — 30 requests per IP per minute
+// ---------------------------------------------------------------------------
+const RATE_WINDOW_MS = 60_000;
+const RATE_LIMIT = 30;
+const hits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = hits.get(ip) ?? [];
+  const recent = timestamps.filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  // Evict stale entries when map gets large
+  if (hits.size > 500) {
+    for (const [key, arr] of hits) {
+      const live = arr.filter((t) => now - t < RATE_WINDOW_MS);
+      if (live.length === 0) hits.delete(key);
+      else hits.set(key, live);
+    }
+  }
+  return recent.length > RATE_LIMIT;
+}
+
 const gradesDir = path.join(process.cwd(), "src/data/grades");
 
 interface Race {
@@ -197,6 +221,15 @@ function formatSingleRace(race: Race, date: string): string {
 // Route handler
 // ---------------------------------------------------------------------------
 export async function GET(request: NextRequest) {
+  // Rate limit by IP
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded", message: "Max 30 requests per minute. Please slow down." },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
+  }
+
   const { searchParams } = request.nextUrl;
   const format = searchParams.get("format");
   const isTable = format === "table" || format === "pretty";

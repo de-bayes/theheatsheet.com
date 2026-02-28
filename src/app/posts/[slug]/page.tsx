@@ -41,7 +41,7 @@ export default async function PostPage({ params }: Props) {
   const allLabels = [
     ...tags.map((t) => ({ label: t, href: `/tags/${slugifyTag(t)}` })),
     ...(post.category
-      ? [{ label: post.category, href: "/the-spread" }]
+      ? [{ label: post.category, href: `/tags/${slugifyTag(post.category)}` }]
       : []),
   ];
 
