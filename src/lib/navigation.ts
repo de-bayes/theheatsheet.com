@@ -24,7 +24,6 @@ export const mainNavItems: NavEntry[] = [
       { label: "Decision Desk", href: "/decision-desk" },
     ],
   },
-  { label: "Tweets", href: "/tweets" },
   { label: "Partners", href: "/partners" },
   { label: "About", href: "/about" },
 ];
@@ -34,7 +33,6 @@ export const footerNavItems: NavItem[] = [
   { label: "Your Local Market", href: "/your-local-market" },
   { label: "The Spread", href: "/the-spread" },
   { label: "Decision Desk", href: "/decision-desk" },
-  { label: "Tweets", href: "/tweets" },
   { label: "Partners", href: "/partners" },
   { label: "About", href: "/about" },
   { label: "Admin", href: "/admin" },

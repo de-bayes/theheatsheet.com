@@ -41,12 +41,6 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold">Admin</h1>
         <div className="flex gap-3">
           <Link
-            href="/admin/tweets"
-            className="px-4 py-2 text-sm bg-charcoal/5 text-charcoal rounded hover:bg-charcoal/10 no-underline transition-colors"
-          >
-            Manage Tweets
-          </Link>
-          <Link
             href="/admin/editor"
             className="px-4 py-2 text-sm bg-charcoal text-cream rounded hover:bg-charcoal/80 no-underline transition-colors"
           >
