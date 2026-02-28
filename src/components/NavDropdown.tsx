@@ -45,7 +45,9 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-1 bg-cream border border-charcoal/10 rounded shadow-lg py-2 min-w-[180px] z-50">
+        <>
+        <div className="absolute top-full left-0 h-2 w-full" />
+        <div className="absolute top-full left-0 mt-2 bg-cream border border-charcoal/10 rounded shadow-lg py-2 min-w-[180px] z-50">
           {items.map((item) => (
             <Link
               key={item.href}
@@ -57,6 +59,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
             </Link>
           ))}
         </div>
+        </>
       )}
     </div>
   );

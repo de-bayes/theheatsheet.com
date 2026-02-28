@@ -19,20 +19,20 @@ export const mainNavItems: NavEntry[] = [
   {
     label: "Projects",
     items: [
-      { label: "Race Ratings", href: "/race-ratings" },
+      { label: "Your Local Market", href: "/your-local-market" },
       { label: "The Spread", href: "/the-spread" },
       { label: "Decision Desk", href: "/decision-desk" },
     ],
   },
-  { label: "Subscribe", href: "/subscribe" },
+  { label: "Partners", href: "/partners" },
   { label: "About", href: "/about" },
 ];
 
 export const footerNavItems: NavItem[] = [
   { label: "Archive", href: "/archive" },
-  { label: "Race Ratings", href: "/race-ratings" },
+  { label: "Your Local Market", href: "/your-local-market" },
   { label: "The Spread", href: "/the-spread" },
   { label: "Decision Desk", href: "/decision-desk" },
-  { label: "Subscribe", href: "/subscribe" },
+  { label: "Partners", href: "/partners" },
   { label: "About", href: "/about" },
 ];

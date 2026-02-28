@@ -3,7 +3,7 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Archive — The Heat Sheet",
+  title: "Archive -- The Heat Sheet",
 };
 
 export default function ArchivePage() {

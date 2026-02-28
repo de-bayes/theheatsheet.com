@@ -2,6 +2,10 @@ import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import BackToTop from "@/components/BackToTop";
+import Link from "next/link";
+import Image from "next/image";
+import gradesData from "@/data/grades/latest.json";
+import MarketGradesTable from "@/components/MarketGradesTable";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -16,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — The Heat Sheet`,
+    title: `${post.title} -- The Heat Sheet`,
     description: post.excerpt,
   };
 }
@@ -30,15 +34,27 @@ export default async function PostPage({ params }: Props) {
   return (
     <article className="max-w-3xl mx-auto">
       {post.category && (
-        <span className="text-xs uppercase tracking-widest text-brand-red font-semibold">
+        <Link
+          href="/the-spread"
+          className="text-xs uppercase tracking-widest text-brand-red font-semibold no-underline hover:underline hover:decoration-wavy hover:decoration-brand-red/30 hover:underline-offset-2 transition-colors"
+        >
           {post.category}
-        </span>
+        </Link>
       )}
       <h1 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
         {post.title}
       </h1>
       <div className="flex items-center gap-3 text-sm text-meta-gray mb-8">
-        <span>By {post.author}</span>
+        <span>
+          By{" "}
+          {post.authorSlug ? (
+            <Link href={`/partners/${post.authorSlug}`} className="text-meta-gray hover:text-charcoal no-underline hover:underline underline-offset-2 transition-colors">
+              {post.author}
+            </Link>
+          ) : (
+            post.author
+          )}
+        </span>
         <span>&middot;</span>
         <time>
           {new Date(post.date).toLocaleDateString("en-US", {
@@ -50,10 +66,27 @@ export default async function PostPage({ params }: Props) {
         <span>&middot;</span>
         <span>{post.readingTime} min read</span>
       </div>
+      {post.image && (
+        <div className="rounded-2xl overflow-hidden border border-charcoal/10 mb-8">
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={1536}
+            height={1024}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+      )}
       <div
         className="article-content text-lg leading-relaxed"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
+      {slug === "your-local-market" && (
+        <div className="mt-12 -mx-4 md:-mx-8 lg:-mx-16">
+          <MarketGradesTable races={gradesData.races} date={gradesData.date} />
+        </div>
+      )}
       <BackToTop />
     </article>
   );

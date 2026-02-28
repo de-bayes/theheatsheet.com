@@ -12,9 +12,35 @@ export interface PostMeta {
   date: string;
   excerpt: string;
   author: string;
+  authorSlug?: string;
   image?: string;
   category?: string;
+  tags?: string[];
   readingTime: number;
+}
+
+function slugifyTag(tag: string): string {
+  return tag.toLowerCase().replace(/\s+/g, "-");
+}
+
+export function getAllTags(): { tag: string; slug: string; count: number }[] {
+  const posts = getAllPosts();
+  const map = new Map<string, { tag: string; count: number }>();
+  for (const p of posts) {
+    for (const t of p.tags ?? []) {
+      const s = slugifyTag(t);
+      const existing = map.get(s);
+      if (existing) existing.count++;
+      else map.set(s, { tag: t, count: 1 });
+    }
+  }
+  return Array.from(map.entries()).map(([slug, v]) => ({ slug, ...v }));
+}
+
+export function getPostsByTag(tagSlug: string): PostMeta[] {
+  return getAllPosts().filter(
+    (p) => p.tags?.some((t) => slugifyTag(t) === tagSlug),
+  );
 }
 
 function estimateReadingTime(text: string): number {
@@ -44,8 +70,10 @@ export function getAllPosts(): PostMeta[] {
         date: data.date,
         excerpt: data.excerpt,
         author: data.author,
+        authorSlug: data.authorSlug || undefined,
         image: data.image || undefined,
         category: data.category || undefined,
+        tags: data.tags || undefined,
         readingTime: estimateReadingTime(content),
       } as PostMeta;
     });
@@ -71,8 +99,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     date: data.date,
     excerpt: data.excerpt,
     author: data.author,
+    authorSlug: data.authorSlug || undefined,
     image: data.image || undefined,
     category: data.category || undefined,
+    tags: data.tags || undefined,
     readingTime: estimateReadingTime(content),
     contentHtml,
   };

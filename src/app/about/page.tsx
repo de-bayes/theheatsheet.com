@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — The Heat Sheet",
+  title: "About -- The Heat Sheet",
   description:
     "The Heat Sheet is a nonpartisan political analysis publication built on calibration, transparency, and accountability.",
 };
+
+const linkClass =
+  "text-charcoal underline underline-offset-2 hover:bg-charcoal/5 hover:decoration-wavy hover:decoration-charcoal/30 transition-colors";
 
 export default function AboutPage() {
   return (
@@ -29,7 +33,7 @@ export default function AboutPage() {
             In competitive swimming, a heat sheet is the document handed out
             before a meet that lists every race, every competitor, their seed
             times, and their lane assignments. It&apos;s the essential reference
-            &mdash; a compact, data-rich summary of who&apos;s racing, where
+            -- a compact, data-rich summary of who&apos;s racing, where
             they stand, and what to expect.
           </p>
           <p>
@@ -38,7 +42,7 @@ export default function AboutPage() {
             where they stand, and what to watch for.
           </p>
           <p className="text-charcoal/65 text-base md:text-lg">
-            The name also works on its own terms &mdash; &ldquo;heat&rdquo;
+            The name also works on its own terms -- &ldquo;heat&rdquo;
             implies intensity, competition, and pressure; &ldquo;sheet&rdquo;
             implies a reference document, a data source, a ratings page. You
             don&apos;t need to know anything about swimming for the name to
@@ -47,158 +51,75 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ---- What We Are ---- */}
+      {/* ---- What We Do ---- */}
       <section className="mb-16 md:mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          What We Are
+          What We Do
         </h2>
         <div className="h-px w-12 bg-brand-red mb-6" />
         <div className="text-lg leading-relaxed space-y-4">
           <p>
-            The Heat Sheet is a nonpartisan political analysis publication built
-            by young analysts who believe election forecasting should be
-            transparent, calibrated, and accountable. We combine the qualitative
-            race-rating tradition of the Cook Political Report with the
-            quantitative rigor of model-based forecasting and the
-            market-informed thinking of the prediction market ecosystem.
+            The Heat Sheet is a nonpartisan political analysis publication. We
+            rate races with explicit probabilities, grade forecasters on
+            calibration, score decision desks on election night, and evaluate
+            prediction markets on health and reliability. Every claim is backed
+            by data. Every projection is scored after the fact.
           </p>
           <p>
-            We are not just another ratings site. We rate races, but we also
-            grade the raters. We track prediction markets, but we tell you
-            which ones to trust. Every claim we make is backed by data, and
-            every projection we publish is scored after the fact.
+            Our first project,{" "}
+            <Link href="/your-local-market" className={linkClass}>
+              Your Local Market
+            </Link>
+            , tackles something nobody else is doing -- grading every House,
+            gubernatorial, and Senate prediction market daily on volume, open
+            interest, and spreads. It lives under{" "}
+            <Link href="/the-spread" className={linkClass}>
+              The Spread
+            </Link>
+            , our prediction market analysis vertical -- where we track
+            liquidity, explain what the prices mean, and separate signal from
+            noise.
           </p>
         </div>
       </section>
 
-      {/* ---- Our Thesis ---- */}
+      {/* ---- Who We Are ---- */}
       <section className="mb-16 md:mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          Our Thesis
+          Who We Are
         </h2>
         <div className="h-px w-12 bg-brand-red mb-6" />
         <div className="text-lg leading-relaxed space-y-4">
           <p>
-            The current political forecasting landscape has a gap. Qualitative
-            raters like Cook, Sabato, and Inside Elections produce expert
-            judgments but refuse to attach probabilities to their ratings and
-            optimize for reputational safety over calibration. Quantitative
-            outlets like the late FiveThirtyEight and Split Ticket build models
-            but don&apos;t systematically hold other forecasters accountable.
-            Prediction markets offer real-time pricing but suffer from
-            illiquidity, wide bid-ask spreads, and a lack of independent quality
-            assessment.
+            A group of high school students who love data and politics. We
+            believe you don&apos;t need a newsroom budget to do election
+            forecasting well -- just rigor, transparency, and a willingness to
+            be graded on your own predictions.
           </p>
           <p>
-            The Heat Sheet sits at the intersection of all three. We publish
-            race ratings with explicit probability estimates. We grade decision
-            desks and forecasters on accuracy and calibration. And we evaluate
-            prediction markets on health and reliability.
+            <Link href="/partners" className={linkClass}>
+              Meet the partners &rarr;
+            </Link>
           </p>
         </div>
       </section>
 
-      {/* ---- Core Principles ---- */}
-      <section className="mb-16 md:mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          Core Principles
-        </h2>
-        <div className="h-px w-12 bg-brand-red mb-6" />
-
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              Calibration Over Accuracy
-            </h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              A &ldquo;Lean R&rdquo; that wins by 25 points is a worse
-              prediction than a &ldquo;Toss Up&rdquo; that wins by 1, even
-              though both &ldquo;called it right.&rdquo; We optimize for each
-              rating category actually meaning what it says. After every
-              election, we publish a full calibration report grading our own
-              performance.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">Radical Transparency</h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              Every rating we publish includes our reasoning. Every model we
-              build has its methodology documented. We show our work because we
-              believe forecasting without transparency is just punditry with a
-              spreadsheet.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">
-              Accountability for Everyone
-            </h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              If we grade decision desks on their calls, we grade ourselves too.
-              If we critique a prediction market&apos;s liquidity, we disclose
-              our own positions. The political forecasting world needs more
-              accountability, and that starts with us.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-2">Nonpartisan Analysis</h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              Our team members have their own political views. We do not pretend
-              otherwise. But our ratings, models, and analysis are built to be
-              as free of partisan bias as possible. The diversity of viewpoints
-              on our team acts as a check on any one perspective dominating our
-              output.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ---- What We Publish ---- */}
+      {/* ---- Contact ---- */}
       <section className="mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          What We Publish
+          Contact
         </h2>
         <div className="h-px w-12 bg-brand-red mb-6" />
-
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-xl font-bold mb-1">Race Ratings</h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              Every competitive House, Senate, and gubernatorial race rated with
-              explicit probability estimates and margin ranges.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-1">The Spread</h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              When prediction markets, expert ratings, and fundamentals disagree
-              on the same race &mdash; we break down why and who we think is
-              right.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-1">
-              Decision Desk Scorecards
-            </h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              Grading AP, DDHQ, Fox, CNN, and NBC on election night speed,
-              accuracy, and the tradeoff between the two.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-1">
-              Prediction Market Health Grades
-            </h3>
-            <p className="text-lg leading-relaxed text-charcoal/85">
-              Not all markets are created equal. We grade them on liquidity,
-              volume, spreads, and convergence.
-            </p>
-          </div>
+        <div className="text-lg leading-relaxed">
+          <p>
+            Questions, tips, or partnership inquiries:{" "}
+            <a
+              href="mailto:ryan@theheatsheet.com"
+              className={linkClass}
+            >
+              ryan@theheatsheet.com
+            </a>
+          </p>
         </div>
       </section>
     </div>

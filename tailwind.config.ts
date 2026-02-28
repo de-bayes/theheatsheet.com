@@ -16,8 +16,8 @@ const config: Config = {
         "brand-red-dark": "#B81C1C",
       },
       fontFamily: {
-        serif: ["EB Garamond", "Georgia", "serif"],
-        logo: ["Cormorant Garamond", "Georgia", "serif"],
+        serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
+        logo: ["var(--font-cormorant-garamond)", "Georgia", "serif"],
       },
     },
   },
