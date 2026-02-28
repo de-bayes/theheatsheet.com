@@ -28,6 +28,7 @@ export async function GET() {
       image: data.image || undefined,
       category: data.category || undefined,
       tags: data.tags || [],
+      pinned: data.pinned || false,
       readingTime: estimateReadingTime(content),
     };
   });
@@ -41,7 +42,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { slug, title, date, excerpt, author, authorSlug, image, category, tags, content } = body;
+  const { slug, title, date, excerpt, author, authorSlug, image, category, tags, pinned, content } = body;
 
   if (!slug || !title || !content) {
     return NextResponse.json({ error: "slug, title, and content are required" }, { status: 400 });
@@ -62,6 +63,7 @@ export async function POST(request: Request) {
   if (image) frontmatter.image = image;
   if (category) frontmatter.category = category;
   if (tags && tags.length > 0) frontmatter.tags = tags;
+  if (pinned) frontmatter.pinned = true;
 
   const fileContent = matter.stringify(content, frontmatter);
   fs.writeFileSync(filePath, fileContent, "utf8");

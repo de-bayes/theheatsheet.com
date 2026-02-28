@@ -16,6 +16,7 @@ export interface PostMeta {
   image?: string;
   category?: string;
   tags?: string[];
+  pinned?: boolean;
   readingTime: number;
 }
 
@@ -74,6 +75,7 @@ export function getAllPosts(): PostMeta[] {
         image: data.image || undefined,
         category: data.category || undefined,
         tags: data.tags || undefined,
+        pinned: data.pinned || undefined,
         readingTime: estimateReadingTime(content),
       } as PostMeta;
     });
@@ -103,6 +105,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     image: data.image || undefined,
     category: data.category || undefined,
     tags: data.tags || undefined,
+    pinned: data.pinned || undefined,
     readingTime: estimateReadingTime(content),
     contentHtml,
   };

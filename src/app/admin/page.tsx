@@ -11,6 +11,7 @@ interface PostMeta {
   author: string;
   category?: string;
   tags?: string[];
+  pinned?: boolean;
   readingTime: number;
 }
 
@@ -32,6 +33,22 @@ export default function AdminDashboard() {
     const res = await fetch(`/api/posts/${slug}`, { method: "DELETE" });
     if (res.ok) {
       setPosts((prev) => prev.filter((p) => p.slug !== slug));
+    }
+  }
+
+  async function handlePin(slug: string, currentlyPinned: boolean) {
+    const res = await fetch(`/api/posts/${slug}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pinned: !currentlyPinned }),
+    });
+    if (res.ok) {
+      setPosts((prev) =>
+        prev.map((p) => ({
+          ...p,
+          pinned: p.slug === slug ? !currentlyPinned : !currentlyPinned ? false : p.pinned,
+        }))
+      );
     }
   }
 
@@ -62,6 +79,11 @@ export default function AdminDashboard() {
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
+                  {post.pinned && (
+                    <span className="text-xs uppercase tracking-widest text-[#5b4a7a] font-semibold bg-[#e8dff0] px-1.5 py-0.5">
+                      Pinned
+                    </span>
+                  )}
                   {post.category && (
                     <span className="text-xs uppercase tracking-widest text-brand-red font-semibold">
                       {post.category}
@@ -101,6 +123,16 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0 pt-1">
+                <button
+                  onClick={() => handlePin(post.slug, !!post.pinned)}
+                  className={`text-xs px-3 py-1.5 rounded transition-colors cursor-pointer ${
+                    post.pinned
+                      ? "text-[#5b4a7a] bg-[#e8dff0] hover:bg-[#d9cce6]"
+                      : "text-meta-gray bg-charcoal/5 hover:bg-charcoal/10"
+                  }`}
+                >
+                  {post.pinned ? "Unpin" : "Pin"}
+                </button>
                 <Link
                   href={`/posts/${post.slug}`}
                   className="text-xs text-meta-gray hover:text-charcoal no-underline transition-colors"
