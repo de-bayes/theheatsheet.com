@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { getAllTags, getPostsByTag } from "@/lib/posts";
 import ArticleCard from "@/components/ArticleCard";
 
@@ -22,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TagPage({ params }: Props) {
   const { slug } = await params;
+
+  // Redirect to dedicated pages where they exist
+  if (slug === "the-spread") redirect("/the-spread");
   const tag = getAllTags().find((t) => t.slug === slug);
   const label = tag?.tag ?? slug;
   const posts = getPostsByTag(slug);
