@@ -17,9 +17,9 @@ export const partners: Partner[] = [
     slug: "ryanm",
     name: "Ryan McComb",
     role: "Founder & Partner",
-    bio: "The world's foremost expert on low-liquidity House prediction markets. Ryan is a high school senior at Evanston Township High School with a background in election forecasting, prediction markets, and data analysis. He is currently a Student Fellow at VoteHub, previously built IL9CAST, an open-source political forecasting model, and was the Volunteer Finance Lead for Biss for Congress.",
+    bio: "The world's foremost expert on low-liquidity House prediction markets (kind of true, though). Ryan is a high school sophomore at Evanston Township High School with a background in election forecasting, prediction markets, and data analysis. He is currently a Student Fellow at VoteHub, previously built IL9CAST, an open-source political forecasting model, and was the Volunteer Finance Lead for Biss for Congress.",
     blurb:
-      "ETHS senior. Election forecasting, prediction markets, and data analysis.",
+      "ETHS sophomore. Election forecasting, prediction markets, and data analysis.",
     photo: "/images/partners/ryanm.jpg",
     email: "ryan@theheatsheet.com",
     website: "https://rjmccomb.xyz",

@@ -4,7 +4,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&amp;display=swap');
     </style>
   </defs>
-  <rect width="1536" height="1024" rx="24" ry="24" fill="#ffffff"/>
+  <rect width="1536" height="1024" fill="#f8f6f1"/>
   <text
     x="768"
     y="530"

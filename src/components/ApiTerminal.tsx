@@ -5,13 +5,12 @@ import { useState, useRef, useEffect, useCallback } from "react";
 const PROMPT = "~ $";
 
 const SUGGESTIONS = [
-  { label: "Senate (table)", cmd: 'curl "/api/grades?chamber=senate&format=table"' },
-  { label: "Tossups (table)", cmd: 'curl "/api/grades?rating=tossup&format=table"' },
-  { label: "Iowa (table)", cmd: 'curl "/api/grades?state=IA&format=table"' },
+  { label: "Senate", cmd: 'curl "/api/grades?chamber=senate&format=table"' },
+  { label: "House", cmd: 'curl "/api/grades?chamber=house&format=table"' },
+  { label: "Iowa", cmd: 'curl "/api/grades?state=IA&format=table"' },
   { label: "Single race", cmd: 'curl "/api/grades?race=S2026IA02&format=table"' },
-  { label: "Senate (JSON)", cmd: 'curl "/api/grades?chamber=senate"' },
   { label: "A-graded", cmd: 'curl "/api/grades?grade=A&format=table"' },
-  { label: "All dates", cmd: 'curl "/api/grades?dates"' },
+  { label: "JSON", cmd: 'curl "/api/grades?chamber=senate"' },
 ];
 
 interface HistoryEntry {

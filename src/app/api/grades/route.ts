@@ -104,7 +104,7 @@ function formatTable(races: Race[], date: string): string {
   }
 
   // Column widths
-  const cW = { race: 14, grade: 5, liq: 12, vol: 5, spr: 5, oi: 5, rating: 10, margin: 7 };
+  const cW = { race: 14, grade: 5, liq: 12, vol: 5, spr: 5, oi: 5 };
 
   // Top border
   const sep =
@@ -114,9 +114,7 @@ function formatTable(races: Race[], date: string): string {
     "\u2500".repeat(cW.liq + 2) + "\u252C" +
     "\u2500".repeat(cW.vol + 2) + "\u252C" +
     "\u2500".repeat(cW.spr + 2) + "\u252C" +
-    "\u2500".repeat(cW.oi + 2) + "\u252C" +
-    "\u2500".repeat(cW.rating + 2) + "\u252C" +
-    "\u2500".repeat(cW.margin + 2) +
+    "\u2500".repeat(cW.oi + 2) +
     "\u2510";
 
   const mid =
@@ -126,9 +124,7 @@ function formatTable(races: Race[], date: string): string {
     "\u2500".repeat(cW.liq + 2) + "\u253C" +
     "\u2500".repeat(cW.vol + 2) + "\u253C" +
     "\u2500".repeat(cW.spr + 2) + "\u253C" +
-    "\u2500".repeat(cW.oi + 2) + "\u253C" +
-    "\u2500".repeat(cW.rating + 2) + "\u253C" +
-    "\u2500".repeat(cW.margin + 2) +
+    "\u2500".repeat(cW.oi + 2) +
     "\u2524";
 
   const bot =
@@ -138,15 +134,12 @@ function formatTable(races: Race[], date: string): string {
     "\u2500".repeat(cW.liq + 2) + "\u2534" +
     "\u2500".repeat(cW.vol + 2) + "\u2534" +
     "\u2500".repeat(cW.spr + 2) + "\u2534" +
-    "\u2500".repeat(cW.oi + 2) + "\u2534" +
-    "\u2500".repeat(cW.rating + 2) + "\u2534" +
-    "\u2500".repeat(cW.margin + 2) +
+    "\u2500".repeat(cW.oi + 2) +
     "\u2518";
 
   function row(
     race: string, grade: string, liq: string,
-    vol: string, spr: string, oi: string,
-    rating: string, margin: string
+    vol: string, spr: string, oi: string
   ): string {
     return (
       "  \u2502 " + pad(race, cW.race) +
@@ -155,19 +148,16 @@ function formatTable(races: Race[], date: string): string {
       " \u2502 " + padLeft(vol, cW.vol) +
       " \u2502 " + padLeft(spr, cW.spr) +
       " \u2502 " + padLeft(oi, cW.oi) +
-      " \u2502 " + pad(rating, cW.rating) +
-      " \u2502 " + padLeft(margin, cW.margin) +
       " \u2502"
     );
   }
 
   lines.push(sep);
-  lines.push(row("Race", "Grade", "Liquidity", "Vol", "Spr", "OI", "Rating", "Margin"));
+  lines.push(row("Race", "Grade", "Liquidity", "Vol", "Spr", "OI"));
   lines.push(mid);
 
   for (const r of races) {
     const label = r.chamber === "House" ? `${r.state}-${r.label}` : r.label;
-    const marginStr = r.margin !== null ? `${r.margin > 0 ? "R" : "D"}+${Math.abs(r.margin)}` : "--";
 
     lines.push(
       row(
@@ -176,17 +166,14 @@ function formatTable(races: Race[], date: string): string {
         gradeBar(r.liquidity_score),
         (r.volume_pct * 100).toFixed(0),
         (r.spread_pct * 100).toFixed(0),
-        (r.oi_pct * 100).toFixed(0),
-        r.rating || "--",
-        marginStr
+        (r.oi_pct * 100).toFixed(0)
       )
     );
   }
 
   lines.push(bot);
   lines.push("");
-  lines.push("  Vol/Spr/OI = percentile rank (0-100). Liquidity = composite score.");
-  lines.push("  Margin: R+5 = Republican +5pts. D+3 = Democrat +3pts.");
+  lines.push("  Vol/Spr/OI = percentile (0-100). Liquidity = composite score.");
   lines.push("");
 
   return lines.join("\n");
@@ -195,15 +182,12 @@ function formatTable(races: Race[], date: string): string {
 function formatSingleRace(race: Race, date: string): string {
   const lines: string[] = [];
   const label = race.chamber === "House" ? `${race.state}-${race.label}` : race.label;
-  const marginStr = race.margin !== null ? `${race.margin > 0 ? "R" : "D"}+${Math.abs(race.margin)}` : "--";
 
   lines.push("");
   lines.push(`  ${label} (${race.chamber})`);
   lines.push(`  ${date}`);
   lines.push("");
   lines.push(`  Grade:     ${race.grade}  ${gradeBar(race.liquidity_score)}  ${(race.liquidity_score * 100).toFixed(1)}%`);
-  lines.push(`  Rating:    ${race.rating || "--"}`);
-  lines.push(`  Margin:    ${marginStr}`);
   lines.push("");
   lines.push(`  Volume:    ${(race.volume_pct * 100).toFixed(0)}th percentile`);
   lines.push(`  Spread:    ${(race.spread_pct * 100).toFixed(0)}th percentile`);
@@ -281,12 +265,6 @@ export async function GET(request: NextRequest) {
   if (grade) {
     const g = grade.toUpperCase();
     races = races.filter((r) => r.grade === g);
-  }
-
-  const rating = searchParams.get("rating");
-  if (rating) {
-    const rt = rating.toLowerCase();
-    races = races.filter((r) => r.rating && r.rating.toLowerCase() === rt);
   }
 
   const minLiq = searchParams.get("min_liquidity");

@@ -47,7 +47,7 @@ export default async function PartnerPage({ params }: Props) {
             alt={partner.name}
             width={400}
             height={400}
-            className="w-full md:w-48 md:h-48 aspect-square rounded-lg object-cover object-top shrink-0"
+            className="w-full md:w-64 md:h-64 aspect-square rounded-lg object-cover object-top shrink-0"
           />
         )}
 

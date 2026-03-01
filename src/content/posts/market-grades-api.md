@@ -1,17 +1,19 @@
 ---
 title: "The Market Grades API"
 date: "2026-02-28"
-excerpt: "Our daily prediction market grades are now available as a free, public JSON API. Filter by chamber, state, grade, or rating -- from the terminal or your own code."
+excerpt: "Our daily prediction market grades are now available as a free, public JSON API -- and you can try it right here in your browser with our interactive terminal."
 author: "Ryan McComb"
 authorSlug: "ryanm"
 category: "The Spread"
 tags: ["Prediction Markets", "2026 Midterms"]
-image: "/images/api-terminal-hero.svg"
+image: "/images/api-terminal-hero.png"
 ---
 
 We grade every House, Senate, and gubernatorial prediction market on Kalshi -- daily, A through F -- on volume, spread, and open interest. If you want to know what that means and why, read [Your Local Market](/posts/your-local-market).
 
 This post is about the API. All of that data is now available as a free, public JSON endpoint. No API key. No authentication. No rate limit (be reasonable). Just fetch and go.
+
+**Try it now** -- scroll down to the interactive terminal at the bottom of this page and click any of the suggestion buttons, or type your own curl command. It runs live against our API, right in your browser.
 
 <div class="api-callout">
 <h4>Base URL</h4>
@@ -29,7 +31,7 @@ https://theheatsheet.com/api/grades
 curl https://theheatsheet.com/api/grades
 ```
 
-Returns all graded races for the most recent date, sorted by competitiveness.
+Returns all graded races for the most recent date, sorted by liquidity score.
 </div>
 
 <div class="api-callout">
@@ -60,16 +62,6 @@ curl "https://theheatsheet.com/api/grades?grade=A"
 ```
 
 Options: `A`, `B`, `C`, `D`, `F`.
-</div>
-
-<div class="api-callout">
-<h4>Filter by rating</h4>
-
-```bash
-curl "https://theheatsheet.com/api/grades?rating=tossup"
-```
-
-Options: `Tossup`, `Lean D`, `Lean R`, `Likely D`, `Likely R`, `Solid D`, `Solid R`.
 </div>
 
 <div class="api-callout">
@@ -127,10 +119,10 @@ curl "https://theheatsheet.com/api/grades?race=S2026IA02&format=table"
 <div class="api-callout">
 <h4>Combine filters</h4>
 
-Filters stack. Get all A-graded Senate tossups as a table:
+Filters stack. Get all A-graded Senate races as a table:
 
 ```bash
-curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup&format=table"
+curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&format=table"
 ```
 
 </div>
@@ -156,9 +148,7 @@ curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup&f
       "liquidity_score": 0.818,
       "volume_pct": 0.817,
       "spread_pct": 0.803,
-      "oi_pct": 0.852,
-      "rating": "Lean R",
-      "margin": 5
+      "oi_pct": 0.852
     }
   ]
 }
@@ -172,9 +162,11 @@ curl "https://theheatsheet.com/api/grades?chamber=senate&grade=A&rating=tossup&f
 - **volume_pct** -- Volume percentile rank within race type
 - **spread_pct** -- Inverse spread percentile (higher = tighter spread)
 - **oi_pct** -- Open interest percentile
-- **rating** -- Implied competitiveness: Solid/Likely/Lean D or R, or Tossup
-- **margin** -- Implied margin in percentage points (positive = R, negative = D)
 - **kalshi_url** -- Direct link to the market on Kalshi
+
+## Try it live
+
+The interactive terminal below runs against our real API. Click a suggestion or type your own curl command.
 
 ## Use cases
 
